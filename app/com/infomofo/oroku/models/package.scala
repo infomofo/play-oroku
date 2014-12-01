@@ -6,9 +6,9 @@ package com.infomofo.oroku.models {
    * https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/PromotingAppswithAppBanners/PromotingAppswithAppBanners.html
    */
   case class AppleItunesMetadata(
-    appId: Int,
-    affiliateData: scala.Option[String] = None,
-    appArgument: scala.Option[String] = None
+    appId: com.infomofo.oroku.models.MetaInteger,
+    affiliateData: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    appArgument: scala.Option[com.infomofo.oroku.models.MetaString] = None
   )
 
   /**
@@ -21,36 +21,84 @@ package com.infomofo.oroku.models {
   )
 
   /**
+   * An html head meta tag that has been parsed for boolean content.
+   */
+  case class MetaBoolean(
+    value: Boolean,
+    tag: String
+  )
+
+  /**
+   * An html head meta tag that has been parsed for date time content.
+   */
+  case class MetaDateTimeIso8601(
+    value: _root_.org.joda.time.DateTime,
+    tag: String
+  )
+
+  /**
+   * An html head meta tag that has been parsed for integer content.
+   */
+  case class MetaInteger(
+    value: Int,
+    tag: String
+  )
+
+  /**
+   * An html head meta tag that has been parsed for open_graph_type content.
+   */
+  case class MetaOpenGraphType(
+    value: com.infomofo.oroku.models.OpenGraphType,
+    tag: String
+  )
+
+  /**
+   * An html head meta tag that has been parsed for string content.
+   */
+  case class MetaString(
+    value: String,
+    tag: String
+  )
+
+  /**
+   * An html head meta tag that has been parsed for twitter_card_type content.
+   */
+  case class MetaTwitterCardType(
+    value: com.infomofo.oroku.models.TwitterCardType,
+    tag: String
+  )
+
+  /**
    * A media type specified by open graph. The og:image, og:audio, and og:video
    * property has some optional structured properties.
    */
   case class OpenGraphMedia(
-    url: String,
-    secureUrl: scala.Option[String] = None,
-    mimeType: scala.Option[String] = None,
-    width: scala.Option[String] = None,
-    height: scala.Option[String] = None
+    url: com.infomofo.oroku.models.MetaString,
+    secureUrl: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    mimeType: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    width: scala.Option[com.infomofo.oroku.models.MetaInteger] = None,
+    height: scala.Option[com.infomofo.oroku.models.MetaInteger] = None
   )
 
   /**
    * Information about the site presented in opengraph format (see ogp.me)
    */
   case class OpenGraphMetadata(
-    title: String,
-    openGraphType: com.infomofo.oroku.models.OpenGraphType,
+    title: com.infomofo.oroku.models.MetaString,
+    openGraphType: com.infomofo.oroku.models.MetaOpenGraphType,
     image: com.infomofo.oroku.models.OpenGraphMedia,
-    url: String,
-    description: scala.Option[String] = None,
-    determiner: scala.Option[String] = None,
-    locale: scala.Option[String] = None,
-    localeAlternative: Seq[String] = Nil,
-    siteName: scala.Option[String] = None,
+    url: com.infomofo.oroku.models.MetaString,
+    description: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    determiner: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    locale: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    localeAlternative: Seq[com.infomofo.oroku.models.MetaString] = Nil,
+    siteName: scala.Option[com.infomofo.oroku.models.MetaString] = None,
     video: scala.Option[com.infomofo.oroku.models.OpenGraphMedia] = None,
     audio: scala.Option[com.infomofo.oroku.models.OpenGraphMedia] = None,
-    updatedTime: scala.Option[_root_.org.joda.time.DateTime] = None,
-    seeAlso: scala.Option[String] = None,
-    appId: scala.Option[String] = None,
-    profileId: scala.Option[String] = None
+    updatedTime: scala.Option[com.infomofo.oroku.models.MetaDateTimeIso8601] = None,
+    seeAlso: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    appId: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    profileId: scala.Option[com.infomofo.oroku.models.MetaString] = None
   )
 
   /**
@@ -107,15 +155,16 @@ package com.infomofo.oroku.models {
    * https://support.google.com/webmasters/answer/79812?hl=en.
    */
   case class SearchMetadata(
-    description: scala.Option[String] = None,
-    title: scala.Option[String] = None,
-    robots: scala.Option[String] = None,
-    googlebot: scala.Option[String] = None,
-    googleSiteLinkSearchBox: scala.Option[Boolean] = None,
-    googleNotranslate: scala.Option[Boolean] = None,
-    googleSiteVerification: Seq[String] = Nil,
-    charset: scala.Option[String] = None,
-    contentType: scala.Option[String] = None
+    description: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    title: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    robots: Seq[com.infomofo.oroku.models.MetaString] = Nil,
+    googlebot: Seq[com.infomofo.oroku.models.MetaString] = Nil,
+    googleSiteLinkSearchBox: scala.Option[com.infomofo.oroku.models.MetaBoolean] = None,
+    googleNotranslate: scala.Option[com.infomofo.oroku.models.MetaBoolean] = None,
+    googleSiteVerification: Seq[com.infomofo.oroku.models.MetaString] = Nil,
+    charset: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    contentType: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    keywords: Seq[com.infomofo.oroku.models.MetaString] = Nil
   )
 
   /**
@@ -131,7 +180,7 @@ package com.infomofo.oroku.models {
    * A twitter card to detail a mobile app with direct download.
    */
   case class TwitterAppInfo(
-    country: scala.Option[String] = None,
+    country: scala.Option[com.infomofo.oroku.models.MetaString] = None,
     iphone: scala.Option[com.infomofo.oroku.models.TwitterAppStoreInfo] = None,
     ipad: scala.Option[com.infomofo.oroku.models.TwitterAppStoreInfo] = None,
     googleplay: scala.Option[com.infomofo.oroku.models.TwitterAppStoreInfo] = None
@@ -142,9 +191,9 @@ package com.infomofo.oroku.models {
    * https://dev.twitter.com/cards/types/app
    */
   case class TwitterAppStoreInfo(
-    name: scala.Option[String] = None,
-    id: String,
-    url: scala.Option[String] = None
+    name: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    id: com.infomofo.oroku.models.MetaString,
+    url: scala.Option[com.infomofo.oroku.models.MetaString] = None
   )
 
   /**
@@ -153,12 +202,12 @@ package com.infomofo.oroku.models {
    * https://dev.twitter.com/cards/markup.
    */
   case class TwitterCardMetadata(
-    card: com.infomofo.oroku.models.TwitterCardType,
-    domain: scala.Option[String] = None,
+    card: com.infomofo.oroku.models.MetaTwitterCardType,
+    domain: scala.Option[com.infomofo.oroku.models.MetaString] = None,
     site: scala.Option[com.infomofo.oroku.models.TwitterUser] = None,
     creator: scala.Option[com.infomofo.oroku.models.TwitterUser] = None,
-    description: scala.Option[String] = None,
-    title: scala.Option[String] = None,
+    description: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    title: scala.Option[com.infomofo.oroku.models.MetaString] = None,
     images: Seq[com.infomofo.oroku.models.TwitterImage] = Nil,
     app: scala.Option[com.infomofo.oroku.models.TwitterAppInfo] = None,
     customFields: Seq[com.infomofo.oroku.models.TwitterCustomField] = Nil
@@ -168,17 +217,17 @@ package com.infomofo.oroku.models {
    * A customizable data field to display on a twitter card
    */
   case class TwitterCustomField(
-    label: scala.Option[String] = None,
-    data: String
+    label: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    data: com.infomofo.oroku.models.MetaString
   )
 
   /**
    * An image represented on a twitter card for a page.
    */
   case class TwitterImage(
-    src: String,
-    width: scala.Option[String] = None,
-    height: scala.Option[String] = None
+    src: com.infomofo.oroku.models.MetaString,
+    width: scala.Option[com.infomofo.oroku.models.MetaInteger] = None,
+    height: scala.Option[com.infomofo.oroku.models.MetaInteger] = None
   )
 
   /**
@@ -186,8 +235,8 @@ package com.infomofo.oroku.models {
    * https://dev.twitter.com/cards/markup
    */
   case class TwitterUser(
-    username: scala.Option[String] = None,
-    id: scala.Option[Int] = None
+    username: scala.Option[com.infomofo.oroku.models.MetaString] = None,
+    id: scala.Option[com.infomofo.oroku.models.MetaInteger] = None
   )
 
   /**
@@ -340,17 +389,17 @@ package com.infomofo.oroku.models {
     }
     implicit def jsonReadsOrokuAppleItunesMetadata: play.api.libs.json.Reads[AppleItunesMetadata] = {
       (
-        (__ \ "app_id").read[Int] and
-        (__ \ "affiliate_data").readNullable[String] and
-        (__ \ "app_argument").readNullable[String]
+        (__ \ "app_id").read[com.infomofo.oroku.models.MetaInteger] and
+        (__ \ "affiliate_data").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "app_argument").readNullable[com.infomofo.oroku.models.MetaString]
       )(AppleItunesMetadata.apply _)
     }
 
     implicit def jsonWritesOrokuAppleItunesMetadata: play.api.libs.json.Writes[AppleItunesMetadata] = {
       (
-        (__ \ "app_id").write[Int] and
-        (__ \ "affiliate_data").write[scala.Option[String]] and
-        (__ \ "app_argument").write[scala.Option[String]]
+        (__ \ "app_id").write[com.infomofo.oroku.models.MetaInteger] and
+        (__ \ "affiliate_data").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "app_argument").write[scala.Option[com.infomofo.oroku.models.MetaString]]
       )(unlift(AppleItunesMetadata.unapply _))
     }
 
@@ -368,63 +417,147 @@ package com.infomofo.oroku.models {
       )(unlift(BrandObject.unapply _))
     }
 
+    implicit def jsonReadsOrokuMetaBoolean: play.api.libs.json.Reads[MetaBoolean] = {
+      (
+        (__ \ "value").read[Boolean] and
+        (__ \ "tag").read[String]
+      )(MetaBoolean.apply _)
+    }
+
+    implicit def jsonWritesOrokuMetaBoolean: play.api.libs.json.Writes[MetaBoolean] = {
+      (
+        (__ \ "value").write[Boolean] and
+        (__ \ "tag").write[String]
+      )(unlift(MetaBoolean.unapply _))
+    }
+
+    implicit def jsonReadsOrokuMetaDateTimeIso8601: play.api.libs.json.Reads[MetaDateTimeIso8601] = {
+      (
+        (__ \ "value").read[_root_.org.joda.time.DateTime] and
+        (__ \ "tag").read[String]
+      )(MetaDateTimeIso8601.apply _)
+    }
+
+    implicit def jsonWritesOrokuMetaDateTimeIso8601: play.api.libs.json.Writes[MetaDateTimeIso8601] = {
+      (
+        (__ \ "value").write[_root_.org.joda.time.DateTime] and
+        (__ \ "tag").write[String]
+      )(unlift(MetaDateTimeIso8601.unapply _))
+    }
+
+    implicit def jsonReadsOrokuMetaInteger: play.api.libs.json.Reads[MetaInteger] = {
+      (
+        (__ \ "value").read[Int] and
+        (__ \ "tag").read[String]
+      )(MetaInteger.apply _)
+    }
+
+    implicit def jsonWritesOrokuMetaInteger: play.api.libs.json.Writes[MetaInteger] = {
+      (
+        (__ \ "value").write[Int] and
+        (__ \ "tag").write[String]
+      )(unlift(MetaInteger.unapply _))
+    }
+
+    implicit def jsonReadsOrokuMetaOpenGraphType: play.api.libs.json.Reads[MetaOpenGraphType] = {
+      (
+        (__ \ "value").read[com.infomofo.oroku.models.OpenGraphType] and
+        (__ \ "tag").read[String]
+      )(MetaOpenGraphType.apply _)
+    }
+
+    implicit def jsonWritesOrokuMetaOpenGraphType: play.api.libs.json.Writes[MetaOpenGraphType] = {
+      (
+        (__ \ "value").write[com.infomofo.oroku.models.OpenGraphType] and
+        (__ \ "tag").write[String]
+      )(unlift(MetaOpenGraphType.unapply _))
+    }
+
+    implicit def jsonReadsOrokuMetaString: play.api.libs.json.Reads[MetaString] = {
+      (
+        (__ \ "value").read[String] and
+        (__ \ "tag").read[String]
+      )(MetaString.apply _)
+    }
+
+    implicit def jsonWritesOrokuMetaString: play.api.libs.json.Writes[MetaString] = {
+      (
+        (__ \ "value").write[String] and
+        (__ \ "tag").write[String]
+      )(unlift(MetaString.unapply _))
+    }
+
+    implicit def jsonReadsOrokuMetaTwitterCardType: play.api.libs.json.Reads[MetaTwitterCardType] = {
+      (
+        (__ \ "value").read[com.infomofo.oroku.models.TwitterCardType] and
+        (__ \ "tag").read[String]
+      )(MetaTwitterCardType.apply _)
+    }
+
+    implicit def jsonWritesOrokuMetaTwitterCardType: play.api.libs.json.Writes[MetaTwitterCardType] = {
+      (
+        (__ \ "value").write[com.infomofo.oroku.models.TwitterCardType] and
+        (__ \ "tag").write[String]
+      )(unlift(MetaTwitterCardType.unapply _))
+    }
+
     implicit def jsonReadsOrokuOpenGraphMedia: play.api.libs.json.Reads[OpenGraphMedia] = {
       (
-        (__ \ "url").read[String] and
-        (__ \ "secure_url").readNullable[String] and
-        (__ \ "mime_type").readNullable[String] and
-        (__ \ "width").readNullable[String] and
-        (__ \ "height").readNullable[String]
+        (__ \ "url").read[com.infomofo.oroku.models.MetaString] and
+        (__ \ "secure_url").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "mime_type").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "width").readNullable[com.infomofo.oroku.models.MetaInteger] and
+        (__ \ "height").readNullable[com.infomofo.oroku.models.MetaInteger]
       )(OpenGraphMedia.apply _)
     }
 
     implicit def jsonWritesOrokuOpenGraphMedia: play.api.libs.json.Writes[OpenGraphMedia] = {
       (
-        (__ \ "url").write[String] and
-        (__ \ "secure_url").write[scala.Option[String]] and
-        (__ \ "mime_type").write[scala.Option[String]] and
-        (__ \ "width").write[scala.Option[String]] and
-        (__ \ "height").write[scala.Option[String]]
+        (__ \ "url").write[com.infomofo.oroku.models.MetaString] and
+        (__ \ "secure_url").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "mime_type").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "width").write[scala.Option[com.infomofo.oroku.models.MetaInteger]] and
+        (__ \ "height").write[scala.Option[com.infomofo.oroku.models.MetaInteger]]
       )(unlift(OpenGraphMedia.unapply _))
     }
 
     implicit def jsonReadsOrokuOpenGraphMetadata: play.api.libs.json.Reads[OpenGraphMetadata] = {
       (
-        (__ \ "title").read[String] and
-        (__ \ "open_graph_type").read[com.infomofo.oroku.models.OpenGraphType] and
+        (__ \ "title").read[com.infomofo.oroku.models.MetaString] and
+        (__ \ "open_graph_type").read[com.infomofo.oroku.models.MetaOpenGraphType] and
         (__ \ "image").read[com.infomofo.oroku.models.OpenGraphMedia] and
-        (__ \ "url").read[String] and
-        (__ \ "description").readNullable[String] and
-        (__ \ "determiner").readNullable[String] and
-        (__ \ "locale").readNullable[String] and
-        (__ \ "locale_alternative").readNullable[Seq[String]].map(_.getOrElse(Nil)) and
-        (__ \ "site_name").readNullable[String] and
+        (__ \ "url").read[com.infomofo.oroku.models.MetaString] and
+        (__ \ "description").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "determiner").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "locale").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "locale_alternative").readNullable[Seq[com.infomofo.oroku.models.MetaString]].map(_.getOrElse(Nil)) and
+        (__ \ "site_name").readNullable[com.infomofo.oroku.models.MetaString] and
         (__ \ "video").readNullable[com.infomofo.oroku.models.OpenGraphMedia] and
         (__ \ "audio").readNullable[com.infomofo.oroku.models.OpenGraphMedia] and
-        (__ \ "updated_time").readNullable[_root_.org.joda.time.DateTime] and
-        (__ \ "see_also").readNullable[String] and
-        (__ \ "app_id").readNullable[String] and
-        (__ \ "profile_id").readNullable[String]
+        (__ \ "updated_time").readNullable[com.infomofo.oroku.models.MetaDateTimeIso8601] and
+        (__ \ "see_also").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "app_id").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "profile_id").readNullable[com.infomofo.oroku.models.MetaString]
       )(OpenGraphMetadata.apply _)
     }
 
     implicit def jsonWritesOrokuOpenGraphMetadata: play.api.libs.json.Writes[OpenGraphMetadata] = {
       (
-        (__ \ "title").write[String] and
-        (__ \ "open_graph_type").write[com.infomofo.oroku.models.OpenGraphType] and
+        (__ \ "title").write[com.infomofo.oroku.models.MetaString] and
+        (__ \ "open_graph_type").write[com.infomofo.oroku.models.MetaOpenGraphType] and
         (__ \ "image").write[com.infomofo.oroku.models.OpenGraphMedia] and
-        (__ \ "url").write[String] and
-        (__ \ "description").write[scala.Option[String]] and
-        (__ \ "determiner").write[scala.Option[String]] and
-        (__ \ "locale").write[scala.Option[String]] and
-        (__ \ "locale_alternative").write[Seq[String]] and
-        (__ \ "site_name").write[scala.Option[String]] and
+        (__ \ "url").write[com.infomofo.oroku.models.MetaString] and
+        (__ \ "description").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "determiner").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "locale").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "locale_alternative").write[Seq[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "site_name").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
         (__ \ "video").write[scala.Option[com.infomofo.oroku.models.OpenGraphMedia]] and
         (__ \ "audio").write[scala.Option[com.infomofo.oroku.models.OpenGraphMedia]] and
-        (__ \ "updated_time").write[scala.Option[_root_.org.joda.time.DateTime]] and
-        (__ \ "see_also").write[scala.Option[String]] and
-        (__ \ "app_id").write[scala.Option[String]] and
-        (__ \ "profile_id").write[scala.Option[String]]
+        (__ \ "updated_time").write[scala.Option[com.infomofo.oroku.models.MetaDateTimeIso8601]] and
+        (__ \ "see_also").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "app_id").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "profile_id").write[scala.Option[com.infomofo.oroku.models.MetaString]]
       )(unlift(OpenGraphMetadata.unapply _))
     }
 
@@ -508,29 +641,31 @@ package com.infomofo.oroku.models {
 
     implicit def jsonReadsOrokuSearchMetadata: play.api.libs.json.Reads[SearchMetadata] = {
       (
-        (__ \ "description").readNullable[String] and
-        (__ \ "title").readNullable[String] and
-        (__ \ "robots").readNullable[String] and
-        (__ \ "googlebot").readNullable[String] and
-        (__ \ "google_site_link_search_box").readNullable[Boolean] and
-        (__ \ "google_notranslate").readNullable[Boolean] and
-        (__ \ "google_site_verification").readNullable[Seq[String]].map(_.getOrElse(Nil)) and
-        (__ \ "charset").readNullable[String] and
-        (__ \ "content_type").readNullable[String]
+        (__ \ "description").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "title").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "robots").readNullable[Seq[com.infomofo.oroku.models.MetaString]].map(_.getOrElse(Nil)) and
+        (__ \ "googlebot").readNullable[Seq[com.infomofo.oroku.models.MetaString]].map(_.getOrElse(Nil)) and
+        (__ \ "google_site_link_search_box").readNullable[com.infomofo.oroku.models.MetaBoolean] and
+        (__ \ "google_notranslate").readNullable[com.infomofo.oroku.models.MetaBoolean] and
+        (__ \ "google_site_verification").readNullable[Seq[com.infomofo.oroku.models.MetaString]].map(_.getOrElse(Nil)) and
+        (__ \ "charset").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "content_type").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "keywords").readNullable[Seq[com.infomofo.oroku.models.MetaString]].map(_.getOrElse(Nil))
       )(SearchMetadata.apply _)
     }
 
     implicit def jsonWritesOrokuSearchMetadata: play.api.libs.json.Writes[SearchMetadata] = {
       (
-        (__ \ "description").write[scala.Option[String]] and
-        (__ \ "title").write[scala.Option[String]] and
-        (__ \ "robots").write[scala.Option[String]] and
-        (__ \ "googlebot").write[scala.Option[String]] and
-        (__ \ "google_site_link_search_box").write[scala.Option[Boolean]] and
-        (__ \ "google_notranslate").write[scala.Option[Boolean]] and
-        (__ \ "google_site_verification").write[Seq[String]] and
-        (__ \ "charset").write[scala.Option[String]] and
-        (__ \ "content_type").write[scala.Option[String]]
+        (__ \ "description").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "title").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "robots").write[Seq[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "googlebot").write[Seq[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "google_site_link_search_box").write[scala.Option[com.infomofo.oroku.models.MetaBoolean]] and
+        (__ \ "google_notranslate").write[scala.Option[com.infomofo.oroku.models.MetaBoolean]] and
+        (__ \ "google_site_verification").write[Seq[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "charset").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "content_type").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "keywords").write[Seq[com.infomofo.oroku.models.MetaString]]
       )(unlift(SearchMetadata.unapply _))
     }
 
@@ -552,7 +687,7 @@ package com.infomofo.oroku.models {
 
     implicit def jsonReadsOrokuTwitterAppInfo: play.api.libs.json.Reads[TwitterAppInfo] = {
       (
-        (__ \ "country").readNullable[String] and
+        (__ \ "country").readNullable[com.infomofo.oroku.models.MetaString] and
         (__ \ "iphone").readNullable[com.infomofo.oroku.models.TwitterAppStoreInfo] and
         (__ \ "ipad").readNullable[com.infomofo.oroku.models.TwitterAppStoreInfo] and
         (__ \ "googleplay").readNullable[com.infomofo.oroku.models.TwitterAppStoreInfo]
@@ -561,7 +696,7 @@ package com.infomofo.oroku.models {
 
     implicit def jsonWritesOrokuTwitterAppInfo: play.api.libs.json.Writes[TwitterAppInfo] = {
       (
-        (__ \ "country").write[scala.Option[String]] and
+        (__ \ "country").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
         (__ \ "iphone").write[scala.Option[com.infomofo.oroku.models.TwitterAppStoreInfo]] and
         (__ \ "ipad").write[scala.Option[com.infomofo.oroku.models.TwitterAppStoreInfo]] and
         (__ \ "googleplay").write[scala.Option[com.infomofo.oroku.models.TwitterAppStoreInfo]]
@@ -570,28 +705,28 @@ package com.infomofo.oroku.models {
 
     implicit def jsonReadsOrokuTwitterAppStoreInfo: play.api.libs.json.Reads[TwitterAppStoreInfo] = {
       (
-        (__ \ "name").readNullable[String] and
-        (__ \ "id").read[String] and
-        (__ \ "url").readNullable[String]
+        (__ \ "name").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "id").read[com.infomofo.oroku.models.MetaString] and
+        (__ \ "url").readNullable[com.infomofo.oroku.models.MetaString]
       )(TwitterAppStoreInfo.apply _)
     }
 
     implicit def jsonWritesOrokuTwitterAppStoreInfo: play.api.libs.json.Writes[TwitterAppStoreInfo] = {
       (
-        (__ \ "name").write[scala.Option[String]] and
-        (__ \ "id").write[String] and
-        (__ \ "url").write[scala.Option[String]]
+        (__ \ "name").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "id").write[com.infomofo.oroku.models.MetaString] and
+        (__ \ "url").write[scala.Option[com.infomofo.oroku.models.MetaString]]
       )(unlift(TwitterAppStoreInfo.unapply _))
     }
 
     implicit def jsonReadsOrokuTwitterCardMetadata: play.api.libs.json.Reads[TwitterCardMetadata] = {
       (
-        (__ \ "card").read[com.infomofo.oroku.models.TwitterCardType] and
-        (__ \ "domain").readNullable[String] and
+        (__ \ "card").read[com.infomofo.oroku.models.MetaTwitterCardType] and
+        (__ \ "domain").readNullable[com.infomofo.oroku.models.MetaString] and
         (__ \ "site").readNullable[com.infomofo.oroku.models.TwitterUser] and
         (__ \ "creator").readNullable[com.infomofo.oroku.models.TwitterUser] and
-        (__ \ "description").readNullable[String] and
-        (__ \ "title").readNullable[String] and
+        (__ \ "description").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "title").readNullable[com.infomofo.oroku.models.MetaString] and
         (__ \ "images").readNullable[Seq[com.infomofo.oroku.models.TwitterImage]].map(_.getOrElse(Nil)) and
         (__ \ "app").readNullable[com.infomofo.oroku.models.TwitterAppInfo] and
         (__ \ "custom_fields").readNullable[Seq[com.infomofo.oroku.models.TwitterCustomField]].map(_.getOrElse(Nil))
@@ -600,12 +735,12 @@ package com.infomofo.oroku.models {
 
     implicit def jsonWritesOrokuTwitterCardMetadata: play.api.libs.json.Writes[TwitterCardMetadata] = {
       (
-        (__ \ "card").write[com.infomofo.oroku.models.TwitterCardType] and
-        (__ \ "domain").write[scala.Option[String]] and
+        (__ \ "card").write[com.infomofo.oroku.models.MetaTwitterCardType] and
+        (__ \ "domain").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
         (__ \ "site").write[scala.Option[com.infomofo.oroku.models.TwitterUser]] and
         (__ \ "creator").write[scala.Option[com.infomofo.oroku.models.TwitterUser]] and
-        (__ \ "description").write[scala.Option[String]] and
-        (__ \ "title").write[scala.Option[String]] and
+        (__ \ "description").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "title").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
         (__ \ "images").write[Seq[com.infomofo.oroku.models.TwitterImage]] and
         (__ \ "app").write[scala.Option[com.infomofo.oroku.models.TwitterAppInfo]] and
         (__ \ "custom_fields").write[Seq[com.infomofo.oroku.models.TwitterCustomField]]
@@ -614,45 +749,45 @@ package com.infomofo.oroku.models {
 
     implicit def jsonReadsOrokuTwitterCustomField: play.api.libs.json.Reads[TwitterCustomField] = {
       (
-        (__ \ "label").readNullable[String] and
-        (__ \ "data").read[String]
+        (__ \ "label").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "data").read[com.infomofo.oroku.models.MetaString]
       )(TwitterCustomField.apply _)
     }
 
     implicit def jsonWritesOrokuTwitterCustomField: play.api.libs.json.Writes[TwitterCustomField] = {
       (
-        (__ \ "label").write[scala.Option[String]] and
-        (__ \ "data").write[String]
+        (__ \ "label").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "data").write[com.infomofo.oroku.models.MetaString]
       )(unlift(TwitterCustomField.unapply _))
     }
 
     implicit def jsonReadsOrokuTwitterImage: play.api.libs.json.Reads[TwitterImage] = {
       (
-        (__ \ "src").read[String] and
-        (__ \ "width").readNullable[String] and
-        (__ \ "height").readNullable[String]
+        (__ \ "src").read[com.infomofo.oroku.models.MetaString] and
+        (__ \ "width").readNullable[com.infomofo.oroku.models.MetaInteger] and
+        (__ \ "height").readNullable[com.infomofo.oroku.models.MetaInteger]
       )(TwitterImage.apply _)
     }
 
     implicit def jsonWritesOrokuTwitterImage: play.api.libs.json.Writes[TwitterImage] = {
       (
-        (__ \ "src").write[String] and
-        (__ \ "width").write[scala.Option[String]] and
-        (__ \ "height").write[scala.Option[String]]
+        (__ \ "src").write[com.infomofo.oroku.models.MetaString] and
+        (__ \ "width").write[scala.Option[com.infomofo.oroku.models.MetaInteger]] and
+        (__ \ "height").write[scala.Option[com.infomofo.oroku.models.MetaInteger]]
       )(unlift(TwitterImage.unapply _))
     }
 
     implicit def jsonReadsOrokuTwitterUser: play.api.libs.json.Reads[TwitterUser] = {
       (
-        (__ \ "username").readNullable[String] and
-        (__ \ "id").readNullable[Int]
+        (__ \ "username").readNullable[com.infomofo.oroku.models.MetaString] and
+        (__ \ "id").readNullable[com.infomofo.oroku.models.MetaInteger]
       )(TwitterUser.apply _)
     }
 
     implicit def jsonWritesOrokuTwitterUser: play.api.libs.json.Writes[TwitterUser] = {
       (
-        (__ \ "username").write[scala.Option[String]] and
-        (__ \ "id").write[scala.Option[Int]]
+        (__ \ "username").write[scala.Option[com.infomofo.oroku.models.MetaString]] and
+        (__ \ "id").write[scala.Option[com.infomofo.oroku.models.MetaInteger]]
       )(unlift(TwitterUser.unapply _))
     }
   }
