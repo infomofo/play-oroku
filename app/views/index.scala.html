@@ -76,6 +76,21 @@
                             <span ng-bind="orokuModel.response.open_graph_metadata.open_graph_type.value">
                                 </span>
                         </div>
+                        <div ng-if="orokuModel.response.open_graph_metadata.site_name" layout="row" layout-padding>
+                            <span><b>og:site_name:&nbsp;</b></span>
+                            <span ng-bind="orokuModel.response.open_graph_metadata.site_name.value">
+                                </span>
+                        </div>
+                        <div ng-if="orokuModel.response.open_graph_metadata.description" layout="row" layout-padding>
+                            <span><b>og:description:&nbsp;</b></span>
+                            <span ng-bind="orokuModel.response.open_graph_metadata.description.value">
+                                </span>
+                        </div>
+                        <div ng-if="orokuModel.response.open_graph_metadata.image" layout="row" layout-padding>
+                            <span><b>og:image:&nbsp;</b></span>
+                            <small ng-bind="orokuModel.response.open_graph_metadata.image.url.value" style="word-wrap: break-word;">
+                                </small>
+                        </div>
                     </div>
                 </div>
 
