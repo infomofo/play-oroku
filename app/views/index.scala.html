@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
     <head>
-        <title>Angular Material - Starter App</title>
+        <title>Oroku - a metadata shader</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,6 +61,22 @@
                         </p>
                         <p> <label><md-icon md-font-icon="fa-clock-o" class="fa fa-fw"></md-icon> retrieved</label> <span ng-bind="orokuModel.response.retrieved_at"></span></p>
                      </div>
+                </div>
+
+                <div class="md-whiteframe-z1" layout="row" layout-fill layout-sm="column" layout-padding>
+                    <h2><md-icon md-font-icon="fa-facebook" class="fa fa-fw"></md-icon> open graph data</h2>
+                    <div flex>
+                        <div ng-if="orokuModel.response.open_graph_metadata.title" layout="row" layout-padding layout="start start">
+                                <label><strong>og:title:&nbsp;</strong></label>
+                                <span ng-bind="orokuModel.response.open_graph_metadata.title.value">
+                                </span>
+                        </div>
+                        <div ng-if="orokuModel.response.open_graph_metadata.open_graph_type" layout="row" layout-padding>
+                            <span><b>og:open_graph_type:&nbsp;</b></span>
+                            <span ng-bind="orokuModel.response.open_graph_metadata.open_graph_type.value">
+                                </span>
+                        </div>
+                    </div>
                 </div>
 
                 @*<div layout="row" class="md-whiteframe-z1">*@
