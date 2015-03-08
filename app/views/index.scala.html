@@ -1,7 +1,75 @@
-@(message: String)
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <title>Angular Material - Starter App</title>
 
-@main("Welcome to Play") {
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
 
-    @play20.welcome(message)
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-}
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
+            <!-- Angular Material Dependencies -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-resource.min.js"></script>
+
+
+            <!-- Angular Material Javascript now available via Google CDN; version 0.7 used here -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
+
+        <script src="@routes.Assets.at("javascripts/app.js")"></script>
+    </head>
+
+    <body ng-app="oroku" ng-controller="AppCtrl" layout="column" layout-align="start center">
+
+        <md-toolbar layout="row" layout-padding layout-align="center center">
+            Oroku
+        </md-toolbar>
+
+        <md-content id="content" layout-margin flex layout="column" layout-fill layout-align="start center">
+            <div layout="row" layout-fill style="max-width: 864px;">
+                <form ng-submit="shred()" layout-fill flex layout="row" layout-fill>
+                    <md-input-container flex ng-disabled="orokuModel.status">
+                        <label>enter a url to shred for data:</label>
+                        <input ng-model="orokuModel.url">
+                    </md-input-container>
+                    <md-button type="submit" ng-click="shred()">shred</md-button>
+                </form>
+            </div>
+            <div ng-if="orokuModel.status == 'pending'" style="max-width: 864px ;">
+
+                <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+            <div ng-if="orokuModel.errorMessage" style="max-width: 864px ;" flex>
+                <div ng-bind="orokuModel.errorMessage | json"></div>
+            </div>
+            <div ng-if="orokuModel.response" style="max-width: 864px ;" layout="column" flex layout-align="start center">
+                <div class="md-whiteframe-z1" layout="row" layout-sm="column">
+                    <img ng-src="{{orokuModel.response.images[0]}}" alt="primary image" max-width="300px">
+                    <div flex>
+                        <h2 ng-bind="orokuModel.response.titles[0]"></h2>
+                        <p ng-bind="orokuModel.response.descriptions[0]">
+                        </p>
+                        <p> <label><md-icon md-font-icon="fa-external-link" class="fa fa-fw"></md-icon> link</label>
+                            <span>
+                                <a ng-href="{{orokuModel.response.urls[0]}}" target="_blank" ng-bind="orokuModel.response.urls[0]"></a>
+                            </span>
+                        </p>
+                        <p> <label><md-icon md-font-icon="fa-clock-o" class="fa fa-fw"></md-icon> retrieved</label> <span ng-bind="orokuModel.response.retrieved_at"></span></p>
+                     </div>
+                </div>
+
+                @*<div layout="row" class="md-whiteframe-z1">*@
+                    @*<span ng-repeat="image in orokuModel.response.images">*@
+                        @*<img ng-src="{{image}}" style="max-height: 100px"/>*@
+                    @*</span>*@
+                @*</div>*@
+            </div>
+        </md-content>
+
+    </body>
+</html>

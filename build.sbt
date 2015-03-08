@@ -11,5 +11,6 @@ libraryDependencies ++= Seq(
   anorm,
   cache,
   ws,
-  "org.jsoup" % "jsoup" % "1.8.1"
+  "org.jsoup" % "jsoup" % "1.8.1",
+  "com.typesafe.scala-logging"  %%  "scala-logging" % "3.1.0"
 )
