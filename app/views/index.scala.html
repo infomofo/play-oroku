@@ -83,13 +83,16 @@
                         </div>
                         <div ng-if="orokuModel.response.open_graph_metadata.description" layout="row" layout-padding>
                             <span><b>og:description:&nbsp;</b></span>
-                            <span ng-bind="orokuModel.response.open_graph_metadata.description.value">
-                                </span>
+                            <small ng-bind="orokuModel.response.open_graph_metadata.description.value">
+                                </small>
                         </div>
                         <div ng-if="orokuModel.response.open_graph_metadata.image" layout="row" layout-padding>
                             <span><b>og:image:&nbsp;</b></span>
-                            <small ng-bind="orokuModel.response.open_graph_metadata.image.url.value" style="word-wrap: break-word;">
+                            <div layout="column">
+                                <img ng-src="{{orokuModel.response.open_graph_metadata.image.url.value}}" style="max-width:100px">
+                                <small ng-bind="orokuModel.response.open_graph_metadata.image.url.value" style="word-wrap: break-word;">
                                 </small>
+                            </div>
                         </div>
                     </div>
                 </div>
