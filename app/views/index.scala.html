@@ -49,7 +49,7 @@
             </div>
             <div ng-if="orokuModel.response" style="max-width: 864px ;" layout="column" flex layout-align="start center">
                 <div class="md-whiteframe-z1" layout="row" layout-sm="column">
-                    <img ng-src="{{orokuModel.response.images[0]}}" alt="primary image" max-width="300px">
+                    <img ng-src="{{orokuModel.response.images[0]}}" alt="primary image" style="max-width:300px">
                     <div flex>
                         <h2 ng-bind="orokuModel.response.titles[0]"></h2>
                         <p ng-bind="orokuModel.response.descriptions[0]">
@@ -97,11 +97,42 @@
                     </div>
                 </div>
 
-                @*<div layout="row" class="md-whiteframe-z1">*@
-                    @*<span ng-repeat="image in orokuModel.response.images">*@
-                        @*<img ng-src="{{image}}" style="max-height: 100px"/>*@
-                    @*</span>*@
-                @*</div>*@
+                <div class="md-whiteframe-z1" layout="row" layout-fill layout-sm="column" layout-padding>
+                    <h2><md-icon md-font-icon="fa-twitter" class="fa fa-fw"></md-icon> twitter card data</h2>
+                    <div flex>
+                        <div ng-if="orokuModel.response.twitter_card_metadata.title" layout="row" layout-padding layout="start start">
+                            <label><strong>twitter:title:&nbsp;</strong></label>
+                            <span ng-bind="orokuModel.response.twitter_card_metadata.title.value">
+                                </span>
+                        </div>
+                        <div ng-if="orokuModel.response.twitter_card_metadata.site" layout="row" layout-padding>
+                            <span><b>twitter:site:&nbsp;</b></span>
+                            <span ng-bind="orokuModel.response.twitter_card_metadata.site.username">
+                                </span>
+                        </div>
+                        <div ng-if="orokuModel.response.twitter_card_metadata.description" layout="row" layout-padding>
+                            <span><b>twitter:description:&nbsp;</b></span>
+                            <small ng-bind="orokuModel.response.twitter_card_metadata.description.value">
+                                </small>
+                        </div>
+                        <div ng-if="orokuModel.response.twitter_card_metadata.images[0]" layout="row" layout-padding>
+                            <span><b>twitter:image:&nbsp;</b></span>
+                            <div layout="column">
+                                <img ng-src="{{orokuModel.response.twitter_card_metadata.images[0].url.value}}" style="max-width:100px">
+                                <small ng-bind="orokuModel.response.twitter_card_metadata.images[0].url.value" style="word-wrap: break-word;">
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div layout="column" class="md-whiteframe-z1" layout-padding layout-fill>
+                    <h2>other images</h2>
+                    <div layout="row" layout-padding>
+                    <span ng-repeat="image in orokuModel.response.images">
+                        <img ng-src="{{image}}" style="max-height: 100px"/>
+                    </span>
+                    </div>
+                </div>
             </div>
         </md-content>
 
